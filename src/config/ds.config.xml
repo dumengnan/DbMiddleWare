@@ -1,0 +1,36 @@
+<ds-cofnig>
+
+    <pool>
+        <type>mysql</type>
+        <name>user</name>
+        <driver>com.mysql.jdbc.Driver</driver>
+        <url>jdbc:mysql://localhost:3306/project</url>
+        <username>root</username>
+        <password>123456</password>
+        <minconn>1</minconn>
+        <maxconn>100</maxconn>
+    </pool>
+
+<!--    <pool>
+        <type>oracle</type>
+        <name>user2</name>
+        <driver>oracle.jdbc.driver.OracleDriver</driver>
+        <url>jdbc:oracle:thin:@localhost:1521:user</url>
+        <username>root</username>
+        <password>123456</password>
+        <minconn>10</minconn>
+        <maxconn>100</maxconn>
+    </pool>-->
+
+    <pool>
+        <type>postgreSQL</type>
+        <name>user3</name>
+        <driver>org.postgresql.Driver</driver>
+        <url>jdbc:postgresql://localhost:5432/project</url>
+        <username>root</username>
+        <password>123456</password>
+        <minconn>1</minconn>
+        <maxconn>100</maxconn>
+    </pool>
+
+</ds-cofnig>

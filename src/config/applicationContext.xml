@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+
+       <!--dao层-->
+       <bean id="resolveInputDao" class="com.db.daoImpl.ResolveInputDaoImpl"></bean>
+       <bean id="searchDao" class="com.db.daoImpl.SearchDaoImpl"></bean>
+       <bean id="updateDao" class="com.db.daoImpl.UpdateDaoImpl"></bean>
+
+       <!--service层-->
+       <bean id="resolveService" class="com.db.serviceImpl.ResolveServiceImpl">
+              <property name="resolveInputDao" ref="resolveInputDao"></property>
+              <property name="searchService" ref="searchService"></property>
+              <property name="transferSqlService" ref="transferSqlService"></property>
+       </bean>
+
+       <bean id="searchService" class="com.db.serviceImpl.SearchServiceImpl">
+              <property name="searchDao" ref="searchDao"></property>
+       </bean>
+
+       <bean id="updateService" class="com.db.serviceImpl.UpdateServiceImpl">
+              <property name="updateDao" ref="updateDao"></property>
+       </bean>
+
+       <bean id="transferSqlService" class="com.db.serviceImpl.TransferSqlServiceImpl">
+       </bean>
+
+       <bean id="modifySourceService" class="com.db.serviceImpl.ModifySourceServiceImpl">
+       </bean>
+
+
+       <!--servlet层-->
+       <bean id="search" class="com.db.servlet.SearchServlet">
+              <property name="resolveService" ref="resolveService"></property>
+              <property name="searchService" ref="searchService"></property>
+       </bean>
+
+       <bean id="update" class="com.db.servlet.UpdateServlet">
+              <property name="resolveService" ref="resolveService"></property>
+              <property name="updateService" ref="updateService"></property>
+       </bean>
+
+       <bean id="modifysource" class="com.db.servlet.ModifySourceServlet">
+              <property name="modifySourceService" ref="modifySourceService"></property>
+       </bean>
+
+</beans>
